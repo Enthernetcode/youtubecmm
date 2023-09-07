@@ -113,6 +113,14 @@ class Youtube_Comment:
  def get_link(self, video_id, comment_id, channel_id):
   comment_link = f"https://www.youtube.com/watch?v={video_id}&lc={comment_id}&ab_channel={channel_id}"
   return comment_link
+ def reply_to_comment(self, comment_id, comment_text):
+    flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', scopes=['https://www.googleapis.com/auth/youtube.force-ssl'])
+    credentials = flow.run_local_server(port=8080)
+    youtube = googleapiclient.discovery.build('youtube', 'v3', credentials=credentials)
+    comment_thread_snippet = {'snippet': {'videoId': comment_id, 'topLevelComment': {'snippet': {'textOriginal': comment_text}}}}
+    response = youtube.commentThreads().insert(part='snippet', body=comment_thread_snippet).execute()
+#    response = reply_to_comment(youtube, parent_id='COMMENT_ID', comment_text='Your reply text')
+    reply_id = response['id']
  def run(self):
   self.logo()
   channel_name = input("Enter channel_name:\t")
@@ -127,6 +135,7 @@ class Youtube_Comment:
   link = self.get_link(video_id, comment_id, channel_id)
   print (f"[+] {comment_info}")
   print (f"\n[-] {link}\n")
+#  reply = self.reply_to_comment(comment_id, comment_text)
 #channel_name = input("Enter channel_name:\t")
 my_comment= Youtube_Comment()
 my_comment.run()
