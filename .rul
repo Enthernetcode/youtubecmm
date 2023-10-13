@@ -1,0 +1,10 @@
+The error is caused by passing a string object instead of a dictionary object to the `from_authorized_user_info` function. The `keys_needed` variable is a set of required keys for the credentials, and it is being compared with the keys of the `info` object. The `keys()` method is called on the `info` object, but since it is a string and not a dictionary, it causes an AttributeError.
+
+To fix this error, make sure that the `info` object is a dictionary with the required keys for the credentials. Alternatively, you can use a different method to create the credentials, such as `from_authorized_user_file` which takes a filename as input instead of a dictionary. Here's an example fix using `from_authorized_user_file`:
+
+```
+from google.oauth2.credentials import Credentials
+
+creds_file = '/path/to/creds.json'
+credentials = Credentials.from_authorized_user_file(creds_file)
+```

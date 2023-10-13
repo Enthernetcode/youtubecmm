@@ -33,7 +33,7 @@ class Youtubereply:
         try:
             comment_thread_snippet = {
                 'snippet': {
-                    'videoId': self.video_id,,
+                    'videoId': self.video_id,
                     'topLevelComment': {
                         'snippet': {
                             'parentId': comment_id,
