@@ -37,12 +37,12 @@ class Youtubereply:
                     'topLevelComment': {
                         'snippet': {
                             'parentId': comment_id,
-                            'textOriginal': comment_text
+                            'textOriginal': "Nice am glad"
                         }
                     }
                 }
             }
-            response = self.youtube.commentThreads().insert(part='snippet', body=comment_thread_snippet).execute()
+            response = self.youtube.comments().insert(part='snippet', body=comment_thread_snippet).execute()
             reply_id = response['id']
             print(f"Reply to comment ID '{comment_id}' successful. Reply ID: '{reply_id}'")
             print(f"Reply Text: {comment_text}")
