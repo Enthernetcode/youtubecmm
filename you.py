@@ -13,12 +13,12 @@ from google.oauth2.credentials import Credentials
 class Youtube_Comment:
 
  def __init__(self):
-  with open("credentials.json","r") as cred:
+  with open("credentials1.json","r") as cred:
    credent = cred.read()
    cred.close()
   self.CLIENT_SECRET_FILE = credent
   self.SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
-  self.api_key = "AIzaSyAvIKUv_1iuLutcUZfmJJggavgBPKHDTEk"
+  self.api_key = "AIzaSyDjffdHgn-DV4U8TmzaeQXHlsqWHmadT9U"
   self.youtube = build('youtube', 'v3', developerKey=self.api_key)
   self.API_SERVICE_NAME = 'youtube'
   self.API_VERSION = 'v3'

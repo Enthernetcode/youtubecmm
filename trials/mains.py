@@ -1,6 +1,5 @@
 from google.auth.transport.requests import Request
 import os
-import csv
 from googleapiclient.discovery import build
 import googleapiclient.discovery
 import googleapiclient.errors
@@ -29,7 +28,7 @@ class Youtube_Comment:
   self.response = self.request.execute()
   if 'items' in self.response and len(self.response['items']) > 0:
    channel_id = self.response["items"][0]["id"]
-   print(f"\nthe id of the {channel_name} channel is {channel_id}.\n")
+   print(f"\nthe id of the {channel_name} channel is {channel_id}.\n") #   print (self.response)
    return channel_id
   else:
         raise ValueError("Channel not found")
@@ -137,20 +136,6 @@ class Youtube_Comment:
         with open('token5.json', 'w') as token:
             token.write(creds.to_json())
     return build(self.API_SERVICE_NAME, self.API_VERSION, credentials=creds)
- def authenticate6(self):
-    creds = None
-    if os.path.exists('token6.json'):
-      creds = Credentials.from_authorized_user_file('token6.json', self.SCOPES)
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', self.SCOPES)
-            creds = flow.run_local_server(port=0)
-        with open('token6.json', 'w') as token:
-            token.write(creds.to_json())
-    return build(self.API_SERVICE_NAME, self.API_VERSION, credentials=creds)
  def logo(self):
   print (f"""
 {os.system('figlet -c -f banner Youtube | lolcat')}\n{os.system('figlet -c -f banner Commenter | lolcat')}
@@ -188,151 +173,6 @@ class Youtube_Comment:
         return None
  def reply_to_comment(self, video_id, comment_id, comment_text):
     try:
-        response = self.service1.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
-
- def reply_to_comment1(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service2.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment2(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment3(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment4(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service3.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment5(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service4.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment6(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service5.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment7(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service6.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment8(self, video_id, comment_id, comment_text):
-    try:
-        response = self.service.comments().insert(
-            part="snippet",
-            body={
-                "snippet": {
-                    "parentId": comment_id,
-                    "textOriginal": comment_text,
-                    "videoId": video_id
-                }
-            }
-        ).execute()
-        reply_id = response['id']
-        print(f"replied to comment {comment_id} with reply id {reply_id}")
-    except HttpError as error:
-        print('An error occurred: %s' % error)
- def reply_to_comment9(self, video_id, comment_id, comment_text):
-    try:
         response = self.service.comments().insert(
             part="snippet",
             body={
@@ -352,47 +192,27 @@ class Youtube_Comment:
   return comment_link
  def run(self):
   self.logo()
-#  channel_name = input("Enter channel_name:\t")
-  with open('videos.csv', 'r') as file:
-   data = csv.reader(file)
-   for data in data: 
-    for row in data:
-     channel_id = data[0]
-     video_id = data[1]
-     if __name__ == '__main__':
-      self.service = self.authenticate()
-      self.service1 = self.authenticate1()
-      self.service2 = self.authenticate2()
-      self.service3 = self.authenticate3()
-      self.service4 = self.authenticate4()
-      self.service5 = self.authenticate5()
-      self.service6 = self.authenticate6()
-     comment_text = open("comment.txt").read()
-     comment_text1 = open("comment1.txt").read()
-     comment_text2 = open("comment2.txt").read()
-     comment_text3 = open("comment3.txt").read()
-     comment_text4 = open("comment4.txt").read()
-     comment_text5 = open("comment5.txt").read()
-     comment_text6 = open("comment6.txt").read()
-     comment_text7 = open("comment7.txt").read()
-     comment_text8 = open("comment8.txt").read()
-     comment_info = self.post_comment(video_id, comment_text)
-     comment_id = comment_info["comment_id"]
-     link = self.get_link(video_id, comment_id, channel_id)
-     reply_id = self.reply_to_comment(video_id, comment_id, comment_text1)
-     reply_id1 = self.reply_to_comment1(video_id, comment_id, comment_text2)
-     reply_id2 = self.reply_to_comment2(video_id, comment_id, comment_text3)
-     reply_id3 = self.reply_to_comment3(video_id, comment_id, comment_text4)
-     reply_id4 = self.reply_to_comment4(video_id, comment_id, comment_text5)
-     reply_id5 = self.reply_to_comment5(video_id, comment_id, comment_text6)
-     reply_id6 = self.reply_to_comment6(video_id, comment_id, comment_text7)
-     links = self.get_link(video_id, reply_id, channel_id)
-     with open('links', 'a+') as lin:
-      lin.write(links+'\n')
-      lin.close()
-     print(f"\n[-] {links}")
-     print(f"\n[=] {reply_id}")
-     print(f"\n[+] {comment_info}")
-     print(f"\n[-] {link}\n")
+  channel_name = input("Enter channel_name:\t")
+  channel_id = self.get_channel_id(channel_name)
+  playlist_id = self.get_latest_playlist_id(channel_id)
+  video_id = self.get_latest_video_id(playlist_id)
+  if __name__ == '__main__':
+    self.service = self.authenticate()
+    self.service1 = self.authenticate1()
+    self.service2 = self.authenticate2()
+    self.service3 = self.authenticate3()
+    self.service4 = self.authenticate4()
+    self.service5 = self.authenticate5()
+#    self.service6 = self.authenticate6()
+  comment_text = open("comment.txt").read()
+  comment_info = self.post_comment(video_id, comment_text)
+  comment_id = comment_info["comment_id"] # "Ugx_ssugU5o2urEUH0x4AaABAg" #comment_info["comment_id"]
+  link = self.get_link(video_id, comment_id, channel_id)
+  reply_id = self.reply_to_comment(video_id, comment_id, comment_text)
+  links = self.get_link(video_id, reply_id, channel_id)
+  print(f"\n[-] {links}")
+  print(f"\n[=] {reply_id}")
+  print(f"\n[+] {comment_info}")
+  print(f"\n[-] {link}\n")
 my_comment= Youtube_Comment()
 my_comment.run()
