@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Interaction Result</title>
+</head>
+<body>
+    <h1>YouTube Interaction Result</h1>
+    {% if comment_info %}
+    <p>Comment posted successfully!</p>
+    <p>Author: {{ comment_info['author'] }}</p>
+    <p>Text: {{ comment_info['text'] }}</p>
+    <p>Date: {{ comment_info['date'] }}</p>
+    <p>Like Count: {{ comment_info['like_count'] }}</p>
+    <p>Comment ID: {{ comment_info['comment_id'] }}</p>
+    <p><a href="{{ link }}" target="_blank">View Comment</a></p>
+    {% else %}
+    <p>Failed to post comment.</p>
+    {% endif %}
+</body>
+</html>

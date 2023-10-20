@@ -18,5 +18,7 @@ for line in links:
 print (list)
 for line in list:
  with open('videos.csv', 'a+') as l:
-   l.write(line + '\n')
+   l.write(line)
+   l.write("\n")
    l.close()
+   print (line)
