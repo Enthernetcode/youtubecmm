@@ -355,7 +355,7 @@ class Youtube_Comment:
 #  channel_name = input("Enter channel_name:\t")
   with open('videos.csv', 'r') as file:
    data = csv.reader(file)
-    for row in data:
+   for row in data:
      channel_id = row[0]
      video_id = row[1]
      if __name__ == '__main__':
@@ -363,9 +363,9 @@ class Youtube_Comment:
       self.service1 = self.authenticate1()
       self.service2 = self.authenticate2()
       self.service3 = self.authenticate3()
-      self.service4 = self.authenticate4()
-      self.service5 = self.authenticate5()
-      self.service6 = self.authenticate6()
+#      self.service4 = self.authenticate4()
+#      self.service5 = self.authenticate5()
+#      self.service6 = self.authenticate6()
      comment_text = open("comment.txt").read()
      comment_text1 = open("comment1.txt").read()
      comment_text2 = open("comment2.txt").read()

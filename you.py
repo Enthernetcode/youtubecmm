@@ -113,6 +113,23 @@ class Youtube_Comment:
  def get_link(self, video_id, comment_id, channel_id):
   comment_link = f"https://www.youtube.com/watch?v={video_id}&lc={comment_id}&ab_channel={channel_id}"
   return comment_link
+ def like_comment(self, comment_id):
+     try:
+            # Like the comment
+            self.service.comments().update(
+                part="snippet",
+                body={
+                    "id": comment_id,
+                    "snippet": {
+                        "likeCount": comment_id["snippet"]["topLevelComment"]["snippet"]["likeCount"] +1,
+                    },
+                },
+            ).execute()
+
+            print(f"Successfully liked the comment with ID {comment_id}")
+     except HttpError as e:
+            print(f"An error occurred: {e}")
+
  def reply_to_comment(self, comment_id, comment_text):
     flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', scopes=['https://www.googleapis.com/auth/youtube.force-ssl'])
     credentials = flow.run_local_server(port=8080)
@@ -132,6 +149,7 @@ class Youtube_Comment:
   comment_text = open("comment.txt").read()
   comment_info = self.post_comment(video_id, comment_text)
   comment_id = comment_info["comment_id"]
+  like = self.like_comment(comment_id)
   link = self.get_link(video_id, comment_id, channel_id)
   print (f"[+] {comment_info}")
   print (f"\n[-] {link}\n")

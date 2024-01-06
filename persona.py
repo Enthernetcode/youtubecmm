@@ -198,7 +198,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service.comments().insert(
+        response = self.service1.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -236,7 +236,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service3.comments().insert(
+        response = self.service1.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -254,7 +254,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service4.comments().insert(
+        response = self.service1.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -272,7 +272,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service5.comments().insert(
+        response = self.service3.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -290,7 +290,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service6.comments().insert(
+        response = self.service.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -400,9 +400,9 @@ class Youtube_Comment:
   with open('videos.csv', 'r') as file:
    data = csv.reader(file)
    for row in data:
-     print (row)
+#     print (row)
      channel_id = row[0]
-     print (channel_id)
+#     print (channel_id)
      video_id = row[1]
      print (video_id)
      if __name__ == '__main__':
@@ -410,9 +410,9 @@ class Youtube_Comment:
       self.service1 = self.authenticate1()
       self.service2 = self.authenticate2()
       self.service3 = self.authenticate3()
-      self.service4 = self.authenticate4()
-      self.service5 = self.authenticate5()
-      self.service6 = self.authenticate6()
+#      self.service4 = self.authenticate4()
+#      self.service5 = self.authenticate5()
+#      self.service6 = self.authenticate6()
      comment_text = open("comment.txt").read()
      comment_text1 = open("comment1.txt").read()
      comment_text2 = open("comment2.txt").read()
@@ -436,11 +436,11 @@ class Youtube_Comment:
      reply_id4 = self.reply_to_comment4(video_id, comment_id, comment_text5)
      reply_id5 = self.reply_to_comment5(video_id, comment_id, comment_text6)
      reply_id6 = self.reply_to_comment6(video_id, comment_id, comment_text7)
-     reply_id7 = self.reply_to_comment7(video_id, comment_id, comment_text8)
-     reply_id8 = self.reply_to_comment8(video_id, comment_id, comment_text9)
-     reply_id9 = self.reply_to_comment9(video_id, comment_id, comment_text10)
-     reply_id10 = self.reply_to_comment10(video_id, comment_id, comment_text11)
-     reply_id11 = self.reply_to_comment11(video_id, comment_id, comment_text12)
+#     reply_id7 = self.reply_to_comment7(video_id, comment_id, comment_text8)
+#     reply_id8 = self.reply_to_comment8(video_id, comment_id, comment_text9)
+#     reply_id9 = self.reply_to_comment9(video_id, comment_id, comment_text10)
+#     reply_id10 = self.reply_to_comment10(video_id, comment_id, comment_text11)
+#     reply_id11 = self.reply_to_comment11(video_id, comment_id, comment_text12)
      links = self.get_link(video_id, reply_id, channel_id)
      with open('links', 'a+') as lin:
       lin.write(links+'\n')
