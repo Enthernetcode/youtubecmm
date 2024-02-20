@@ -1,9 +1,6 @@
 from urllib.parse import urlparse, parse_qs
 list = []
-links = [
-'https://youtu.be/75KjLd5XVMY?si=FwQfjZ9bLYAjhfnm',
-'https://youtu.be/75KjLd5XVMY?si=V1ZVS0ZFVPecRbmd'
-]
+links = ['https://youtu.be/AhO3OdOzfeQ?si=T69uMW4QWItnrSyT']
 for line in links:
   print(line)
   youtube_link = line

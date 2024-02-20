@@ -180,7 +180,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service2.comments().insert(
+        response = self.service.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -198,7 +198,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service1.comments().insert(
+        response = self.service2.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -216,7 +216,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service.comments().insert(
+        response = self.service3.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -236,7 +236,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service1.comments().insert(
+        response = self.service2.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -254,7 +254,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service1.comments().insert(
+        response = self.service3.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -272,7 +272,7 @@ class Youtube_Comment:
     if comment_id is None:
      print (f"No comment to reply to, Comment_id : {comment_id}")
     try:
-        response = self.service3.comments().insert(
+        response = self.service2.comments().insert(
             part="snippet",
             body={
                 "snippet": {
@@ -436,7 +436,7 @@ class Youtube_Comment:
      reply_id4 = self.reply_to_comment4(video_id, comment_id, comment_text5)
      reply_id5 = self.reply_to_comment5(video_id, comment_id, comment_text6)
      reply_id6 = self.reply_to_comment6(video_id, comment_id, comment_text7)
-#     reply_id7 = self.reply_to_comment7(video_id, comment_id, comment_text8)
+     reply_id7 = self.reply_to_comment7(video_id, comment_id, comment_text8)
 #     reply_id8 = self.reply_to_comment8(video_id, comment_id, comment_text9)
 #     reply_id9 = self.reply_to_comment9(video_id, comment_id, comment_text10)
 #     reply_id10 = self.reply_to_comment10(video_id, comment_id, comment_text11)
